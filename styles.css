@@ -1,0 +1,39 @@
+.container {
+    width: 50%;
+    margin: auto;
+    border: 5px solid black;
+    overflow: hidden;
+    position: relative;
+}
+
+.slidesContainer {
+    width: 100%;
+    display: flex;
+}
+
+.slidesContainer img {
+    min-width: 100%;
+}
+
+.container button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+#prevBtn {
+    left: 10px;
+}
+
+#nextBtn {
+    right: 10px;
+}
+
+.container button:hover {
+    color: white;
+    transform: scale(110%), translateY(-50%);
+}
