@@ -15,7 +15,8 @@
     min-width: 100%;
 }
 
-.container button {
+.container #prevBtn,
+.container #nextBtn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -38,33 +39,30 @@
     transform: scale(110%), translateY(-50%);
 }
 
-.wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-}
 
 .btnWrapper {
     display: flex;
     gap: 10px;
+    position: absolute;
+    bottom: 15px;
+    right: 50%;
+    transform: translateX(50%);
 }
 
-.slideBtns {
-    border: none;
-    background-color: gray;
-    border-radius: 50%;
-    height: 10px;
+.progressBtns {
+    border: .2px solid white;
+    background-color: black;
+    border-radius: 3px;
+    height: 7px;
     width: 10px;
     cursor: pointer;
 }
 
 .active {
-    transform: scale(130%);
-    filter: brightness(150%);
+    background-color: rgb(194, 194, 194);
 }
 
-.slideBtns.last,
-.slideBtns.first {
+.progressBtns.last,
+.progressBtns.first {
     display: none;
 }

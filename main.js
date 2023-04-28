@@ -5,7 +5,7 @@ const slides = document.querySelectorAll('.slidesContainer img');
 //buttons
 const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
-const progressBtns = document.querySelectorAll('.slideBtns');
+const progressBtns = document.querySelectorAll('.progressBtns');
 
 //scroll by size
 const size = slides[0].clientWidth;
@@ -16,9 +16,9 @@ let counter = 1;
 function scrolSlide() {
   slidesContainer.style.transform = `translateX(${-size * counter}px)`;
   //progessBtns loop
-  if (progressBtns[counter].className === 'slideBtns first') {
+  if (progressBtns[counter].className === 'progressBtns first') {
     progressBtns[1].classList.add('active');
-  } else if (progressBtns[counter].className === 'slideBtns last') {
+  } else if (progressBtns[counter].className === 'progress last') {
     progressBtns[slides.length - 2].classList.add('active');
   } else {
     progressBtns[counter].classList.add('active');
