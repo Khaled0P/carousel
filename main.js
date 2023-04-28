@@ -59,3 +59,14 @@ slidesContainer.addEventListener('transitionend', () => {
     scrolSlide();
   }
 });
+
+progressBtns.forEach((btn, index) => {
+  btn.addEventListener('click', () => {
+    counter = index;
+    progressBtns.forEach((btn) => {
+      btn.classList.remove('active');
+    });
+    slidesContainer.style.transition = 'transform .4s ease-in-out';
+    scrolSlide();
+  });
+});
