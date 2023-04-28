@@ -37,3 +37,34 @@
     color: white;
     transform: scale(110%), translateY(-50%);
 }
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.btnWrapper {
+    display: flex;
+    gap: 10px;
+}
+
+.slideBtns {
+    border: none;
+    background-color: gray;
+    border-radius: 50%;
+    height: 10px;
+    width: 10px;
+    cursor: pointer;
+}
+
+.active {
+    transform: scale(130%);
+    filter: brightness(150%);
+}
+
+.slideBtns.last,
+.slideBtns.first {
+    display: none;
+}
