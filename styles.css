@@ -34,6 +34,16 @@
     right: 10px;
 }
 
+#nextBtn i,
+#prevBtn i{
+    text-shadow: .5px .5px 0 rgb(194, 194, 194), -.5px -.5px 0 rgb(194, 194, 194);
+}
+
+#nextBtn:hover i,
+#prevBtn:hover i{
+    text-shadow: .5px .5px 3px #000, -.5px -.5px 3px #000;
+}
+
 .container button:hover {
     color: white;
     transform: scale(110%), translateY(-50%);
@@ -66,3 +76,4 @@
 .progressBtns.first {
     display: none;
 }
+
