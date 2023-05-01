@@ -12,42 +12,51 @@ const size = slides[0].clientWidth;
 
 //counter
 let counter = 1;
-
 function scrolSlide() {
   slidesContainer.style.transform = `translateX(${-size * counter}px)`;
   //progessBtns loop
   if (progressBtns[counter].className === 'progressBtns first') {
     progressBtns[1].classList.add('active');
-  } else if (progressBtns[counter].className === 'progress last') {
+  } else if (progressBtns[counter].className === 'progressBtns last') {
     progressBtns[slides.length - 2].classList.add('active');
   } else {
     progressBtns[counter].classList.add('active');
   }
 }
 
-scrolSlide();
-
-nextBtn.addEventListener('click', () => {
-  if (counter >= slides.length - 1) return;
+//loop at end of slide
+function loopNext(){
   progressBtns.forEach((btn) => {
     btn.classList.remove('active');
   });
   slidesContainer.style.transition = 'transform .4s ease-in-out';
+}
+
+function loopPrev(){
+
+  progressBtns.forEach((btn) => {
+    btn.classList.remove('active');
+  });
+  slidesContainer.style.transition = 'transform .4s ease-in-out';
+}
+
+scrolSlide();
+
+nextBtn.addEventListener('click', () => {
+  if (counter >= slides.length - 1) return;
+  loopNext();
   counter++;
   scrolSlide();
 });
 
 prevBtn.addEventListener('click', () => {
   if (counter <= 0) return;
-  progressBtns.forEach((btn) => {
-    btn.classList.remove('active');
-  });
-  slidesContainer.style.transition = 'transform .4s ease-in-out';
+  loopPrev();
   counter--;
   scrolSlide();
 });
 
-//carousel loop
+//carousel loop reset
 slidesContainer.addEventListener('transitionend', () => {
   if (slides[counter].className === 'last') {
     counter = slides.length - 2;
