@@ -21,8 +21,8 @@ function scrolSlide() {
     progressBtns[slides.length - 2].classList.add('active');
   } else {
     progressBtns[counter].classList.add('active');
-  }
-}
+  };
+};
 
 //loop at end of slide
 function loopNext(){
@@ -30,30 +30,47 @@ function loopNext(){
     btn.classList.remove('active');
   });
   slidesContainer.style.transition = 'transform .4s ease-in-out';
-}
+};
 
+//loop at beginning of slide
 function loopPrev(){
 
   progressBtns.forEach((btn) => {
     btn.classList.remove('active');
   });
   slidesContainer.style.transition = 'transform .4s ease-in-out';
+};
+
+//automatic slider
+
+function autoSlide(){
+  loopNext();
+  counter++;
+  scrolSlide();
 }
 
 scrolSlide();
 
 nextBtn.addEventListener('click', () => {
   if (counter >= slides.length - 1) return;
+  clearInterval(timer);
   loopNext();
   counter++;
   scrolSlide();
+  timer = setInterval( ()=>{
+    autoSlide()
+  }, 4000);
 });
 
 prevBtn.addEventListener('click', () => {
   if (counter <= 0) return;
+  clearInterval(timer);
   loopPrev();
   counter--;
   scrolSlide();
+  timer = setInterval( ()=>{
+    autoSlide()
+  }, 4000);
 });
 
 //carousel loop reset
@@ -78,4 +95,10 @@ progressBtns.forEach((btn, index) => {
     slidesContainer.style.transition = 'transform .4s ease-in-out';
     scrolSlide();
   });
+});
+
+window.addEventListener('load', () =>{
+timer = setInterval( ()=>{
+  autoSlide()
+}, 4000);
 });
