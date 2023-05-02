@@ -60,14 +60,14 @@ nextBtn.addEventListener('click', () => {
   clearInterval(timer);
   timer = setInterval( ()=>{
     autoSlide()
-  }, 4000);
+  }, 3000);
 });
 
 //start auto slide
 window.addEventListener('load', () =>{
 timer = setInterval( ()=>{
   autoSlide()
-}, 4000);
+}, 3000);
 });
 
 prevBtn.addEventListener('click', () => {
@@ -79,7 +79,7 @@ prevBtn.addEventListener('click', () => {
   clearInterval(timer);
   timer = setInterval( ()=>{
     autoSlide()
-  }, 4000);
+  }, 3000);
 });
 
 //carousel loop reset
@@ -107,6 +107,22 @@ progressBtns.forEach((btn, index) => {
     clearInterval(timer);
     timer = setInterval( ()=>{
       autoSlide()
-    }, 4000);
+    }, 3000);
   });
 });
+
+//automatic slider pause on hover
+
+function pause(){
+  clearInterval(timer);
+}
+
+function resume(){
+  clearInterval(timer);
+  timer = setInterval(()=>{
+    autoSlide()
+  }, 3000)
+}
+
+slidesContainer.addEventListener('mouseenter', ()=> pause());
+slidesContainer.addEventListener('mouseleave', () => resume());
