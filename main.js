@@ -53,21 +53,30 @@ scrolSlide();
 
 nextBtn.addEventListener('click', () => {
   if (counter >= slides.length - 1) return;
-  clearInterval(timer);
   loopNext();
   counter++;
   scrolSlide();
+  //reset timer
+  clearInterval(timer);
   timer = setInterval( ()=>{
     autoSlide()
   }, 4000);
 });
 
+//start auto slide
+window.addEventListener('load', () =>{
+timer = setInterval( ()=>{
+  autoSlide()
+}, 4000);
+});
+
 prevBtn.addEventListener('click', () => {
   if (counter <= 0) return;
-  clearInterval(timer);
   loopPrev();
   counter--;
   scrolSlide();
+  //reset timer
+  clearInterval(timer);
   timer = setInterval( ()=>{
     autoSlide()
   }, 4000);
@@ -89,16 +98,15 @@ slidesContainer.addEventListener('transitionend', () => {
 progressBtns.forEach((btn, index) => {
   btn.addEventListener('click', () => {
     counter = index;
-    progressBtns.forEach((btn) => {
+     progressBtns.forEach((btn) => {
       btn.classList.remove('active');
-    });
+     });
     slidesContainer.style.transition = 'transform .4s ease-in-out';
     scrolSlide();
+    //reset timer
+    clearInterval(timer);
+    timer = setInterval( ()=>{
+      autoSlide()
+    }, 4000);
   });
-});
-
-window.addEventListener('load', () =>{
-timer = setInterval( ()=>{
-  autoSlide()
-}, 4000);
 });
