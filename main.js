@@ -8,7 +8,7 @@ const nextBtn = document.getElementById('nextBtn');
 const progressBtns = document.querySelectorAll('.progressBtns');
 
 //scroll by size
-const size = slides[0].clientWidth;
+let size = slides[0].clientWidth;
 
 //counter
 let counter = 1;
@@ -126,3 +126,11 @@ function resume(){
 
 slidesContainer.addEventListener('mouseenter', ()=> pause());
 slidesContainer.addEventListener('mouseleave', () => resume());
+
+//recalculate on window resize
+
+window.addEventListener('resize', () => {
+  slidesContainer.style.transition = 'none';
+  size = slides[0].clientWidth;
+  slidesContainer.style.transform = `translateX(${-size * counter}px)`;
+})
