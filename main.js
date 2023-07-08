@@ -44,6 +44,7 @@ function loopPrev(){
 //automatic slider
 
 function autoSlide(){
+  if (counter >= slides.length - 1) counter = 1;
   loopNext();
   counter++;
   scrolSlide();
